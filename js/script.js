@@ -114,6 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- START OF LIVE CONTACT FORM SUBMISSION CODE ---
+    document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.querySelector('.contact-form');
     const nameInput = document.getElementById('name');
     const emailInput = document.getElementById('email');
@@ -185,6 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 5000);
         }
     });
+})
     // --- END OF LIVE CONTACT FORM SUBMISSION CODE ---
 
 });

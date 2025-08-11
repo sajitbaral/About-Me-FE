@@ -1132,3 +1132,23 @@ body.dark-mode footer {
         align-self: stretch;
     }
 }
+#form-message {
+  font-weight: 600;
+  margin-top: 10px;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#form-message.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#form-message.error {
+  color: #d9534f; /* red */
+}
+
+#form-message.success {
+  color: #28a745; /* green */
+}

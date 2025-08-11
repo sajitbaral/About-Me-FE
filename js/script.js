@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // !!! IMPORTANT: THIS IS THE BACKEND URL FOR LOCAL TESTING !!!
     // When deployed, you MUST change this to your Render backend URL.
-    const backendUrl = 'https://about-me-be.onrender.com';
+    const backendUrl = 'https://about-me-be.onrender.com/send-email';
 
     contactForm.addEventListener('submit', async function(e) {
         e.preventDefault(); // Prevent default form submission

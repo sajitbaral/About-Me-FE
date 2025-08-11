@@ -113,11 +113,78 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Dummy Form Submission for Contact Section
-    //const contactForm = document.querySelector('.contact-form');
-    //contactForm.addEventListener('submit', function(e) {
-    //   e.preventDefault(); // Prevent actual form submission to a server
-    //   alert('Thank you for your message! I will get back to you soon. (This is a dummy submission for demonstration purposes.)');
-    //   contactForm.reset(); // Clear the form fields
-   // });
+    // --- START OF LIVE CONTACT FORM SUBMISSION CODE ---
+    const contactForm = document.querySelector('.contact-form');
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const messageInput = document.getElementById('message');
+    const submitButton = document.getElementById('submit-button');
+    const formMessage = document.getElementById('form-message'); // This ID is in your HTML
+
+    // !!! IMPORTANT: THIS IS THE BACKEND URL FOR LOCAL TESTING !!!
+    // When deployed, you MUST change this to your Render backend URL.
+    const backendUrl = 'https://about-me-be.onrender.com';
+
+    contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault(); // Prevent default form submission
+
+        // Clear previous messages and hide
+        formMessage.textContent = '';
+        formMessage.className = ''; // Remove all classes
+
+        // Frontend Validation: Check for empty fields
+        if (!nameInput.value.trim() || !emailInput.value.trim() || !messageInput.value.trim()) {
+            formMessage.textContent = 'Please fill in all fields.';
+            formMessage.classList.add('error', 'show');
+            return;
+        }
+
+        // Show loading state on button
+        submitButton.textContent = 'Sending...';
+        submitButton.classList.add('loading');
+        submitButton.disabled = true;
+
+        try {
+            const response = await fetch(backendUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: nameInput.value.trim(),
+                    email: emailInput.value.trim(),
+                    message: messageInput.value.trim()
+                })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                formMessage.textContent = data.message;
+                formMessage.classList.add('success', 'show');
+                contactForm.reset();
+            } else {
+                formMessage.textContent = data.message || 'An unexpected error occurred.';
+                formMessage.classList.add('error', 'show');
+            }
+        } catch (error) {
+            console.error('Error during form submission:', error);
+            formMessage.textContent = 'Network error. Please try again.';
+            formMessage.classList.add('error', 'show');
+        } finally {
+            // Reset button state
+            submitButton.textContent = 'Send Message';
+            submitButton.classList.remove('loading');
+            submitButton.disabled = false;
+            setTimeout(() => {
+                formMessage.classList.remove('show');
+                setTimeout(() => {
+                    formMessage.textContent = '';
+                    formMessage.className = '';
+                }, 500);
+            }, 5000);
+        }
+    });
+    // --- END OF LIVE CONTACT FORM SUBMISSION CODE ---
+
 });

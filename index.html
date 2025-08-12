@@ -10,23 +10,23 @@
 </head>
 <body>
     <header>
-    <nav>
-        <div class="logo">
-            <a href="#home"><img src="path/to/your/logo.png" alt="S"></a>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+        <nav>
+            <div class="logo">
+                <a href="#home"><img src="" alt="S"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
 
-        <button id="darkModeToggle" class="dark-mode-button" aria-label="Toggle dark mode">
-            <i class="fas fa-moon"></i>
-        </button>
-    </nav>
-</header>
+            <button id="darkModeToggle" class="dark-mode-button" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+            </button>
+        </nav>
+    </header>
     <main>
         <section id="home" class="hero-section">
             <div class="hero-content">
@@ -47,19 +47,20 @@
             </div>
         </section>
 
-<section id="about" class="section-container">
-    <h2>About Me</h2>
-    <p>
-        I am a BSc CSIT student at Tribhuvan University with a strong enthusiasm for designing efficient, scalable, and secure systems. Currently, I am deeply focused on learning and practicing DevOps and Cloud Engineering, where I am building hands-on experience with modern tools, automation pipelines, and cloud platforms.
-    </p>
+        <section id="about" class="section-container">
+            <h2>About Me</h2>
+            <p>
+                I am a BSc CSIT student at Tribhuvan University with a strong enthusiasm for designing efficient, scalable, and secure systems. Currently, I am deeply focused on learning and practicing DevOps and Cloud Engineering, where I am building hands-on experience with modern tools, automation pipelines, and cloud platforms.
+            </p>
 
-    <div class="about-quote-box">
-        <i class="fas fa-lightbulb about-quote-icon"></i>
-        <p>"I believe that elegant infrastructure and seamless automation are the backbone of modern innovation."</p>
-    </div>
-    <p>
-        Currently developing skills in core areas such as AWS, CI/CD pipelines, and Kubernetes, I aim to contribute to creating stable, efficient environments that empower development teams. Beyond academics, I strive to grow as a professional who combines technical expertise with a strategic mindset, equipping myself to excel and adapt in dynamic, fast-paced environments.
-</section>
+            <div class="about-quote-box">
+                <i class="fas fa-lightbulb about-quote-icon"></i>
+                <p>"I believe that elegant infrastructure and seamless automation are the backbone of modern innovation."</p>
+            </div>
+            <p>
+                Currently developing skills in core areas such as AWS, CI/CD pipelines, and Kubernetes, I aim to contribute to creating stable, efficient environments that empower development teams. Beyond academics, I strive to grow as a professional who combines technical expertise with a strategic mindset, equipping myself to excel and adapt in dynamic, fast-paced environments.
+            </p>
+        </section>
 
         <section id="skills" class="section-container">
             <h2>Skills</h2>
@@ -117,7 +118,7 @@
                     <p>Developed this professional, responsive portfolio using **HTML, CSS, and JavaScript**, featuring modern design, glassmorphism, and seamless dark mode functionality to showcase my skills.</p>
                     <div class="project-links">
                         <a href="[Link to This Portfolio's GitHub Repo]" target="_blank"><i class="fab fa-github"></i> GitHub Repo</a>
-                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -133,13 +134,13 @@
                     <p class="contact-prompt">I'm always eager to discuss new projects or opportunities. Feel free to reach out via any of the methods above, or use the form on the right.</p>
                 </div>
                 <form class="contact-form">
-  <h3>Send Me a Message</h3>
-  <input type="text" id="name" name="name" placeholder="Your Name" required />
-  <input type="email" id="email" name="email" placeholder="Your Email" required />
-  <textarea id="message" name="message" placeholder="Your Message" rows="6" required></textarea>
-  <button id="submit-button" type="submit">Send Message</button>
-  <div id="form-message" style="margin-top: 10px;"></div>
-</form>
+                    <h3>Send Me a Message</h3>
+                    <input type="text" id="name" name="name" placeholder="Your Name" required />
+                    <input type="email" id="email" name="email" placeholder="Your Email" required />
+                    <textarea id="message" name="message" placeholder="Your Message" rows="6" required></textarea>
+                    <button id="submit-button" type="submit">Send Message</button>
+                    <div id="form-message" style="margin-top: 10px;"></div>
+                </form>
             </div>
             <div class="social-links-contact">
                 <a href="https://www.linkedin.com/in/sajit-baral-474044375/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
@@ -154,57 +155,6 @@
         <p>&copy; 2025 Sajit Baral. All rights reserved.</p>
     </footer>
 
-    <script src="js/script.js"></script>
-    <script>
-  const form = document.querySelector('.contact-form');
-  const statusMessage = document.getElementById('statusMessage');
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const name = form.name.value.trim();
-    const email = form.email.value.trim();
-    const message = form.message.value.trim();
-
-    if (!email) {
-      statusMessage.style.color = 'red';
-      statusMessage.textContent = "Please enter your email.";
-      return;
-    }
-
-    if (!message) {
-      statusMessage.style.color = 'red';
-      statusMessage.textContent = "Please enter your message.";
-      return;
-    }
-
-    statusMessage.style.color = 'black';
-    statusMessage.textContent = "Sending message...";
-
-    try {
-      const response = await fetch('/send', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, message }),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        statusMessage.style.color = 'green';
-        statusMessage.textContent = data.success || "Message sent successfully!";
-        form.reset();
-      } else {
-        statusMessage.style.color = 'red';
-        statusMessage.textContent = data.error || "Failed to send message.";
-      }
-    } catch (error) {
-      statusMessage.style.color = 'red';
-      statusMessage.textContent = "Error occurred. Please try again.";
-    }
-  });
-</script>
-
-    
+    <script src="js/script.js"></script> 
 </body>
 </html>

@@ -1,40 +1,36 @@
-/* Custom Fonts: Poppins (based on screenshot appearance) */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
-/* Base Styles */
+/* Root variables for colors and backgrounds, enabling easy theme switching */
 :root {
-    /* Premium Color Palette (Inspired by screenshots) */
-    --primary-color: #667eea; /* From user's specified gradient */
-    --secondary-color: #764ba2; /* From user's specified gradient */
-    --accent-color: #A090EE; /* A slightly different purple for subtle variations */
+    --primary-color: #667eea;
+    --secondary-color: #764ba2;
+    --accent-color: #A090EE;
 
-    /* Text Colors */
-    --text-color-light: #333333; /* Dark Charcoal for readability on light backgrounds */
-    --text-color-dark: #E0E0E0; /* Light Gray for readability on dark backgrounds */
+    --text-color-light: #333333;
+    --text-color-dark: #E0E0E0;
+    --text-color-light-rgb: 51, 51, 51; /* RGB values for rgba */
+    --text-color-dark-rgb: 224, 224, 224;
 
-    /* Backgrounds */
-    --background-home-start: #667eea; /* User's specified start color */
-    --background-home-end: #764ba2; /* User's specified end color */
-    --background-sections-light: #F8F8F8; /* Very Light Gray for all sections */
-    --background-sections-light-alt: #EFEFEF; /* Slightly darker light gray for alternating sections */
+    --background-home-start: #667eea; /* Gradient start for hero section */
+    --background-home-end: #764ba2;   /* Gradient end for hero section */
+    --background-sections-light: #F8F8F8; /* Light theme section background */
+    --background-sections-light-alt: #EFEFEF; /* Alternate light section background */
 
-    /* Dark Mode Variables */
-    --background-home-start-dark: #1f005c; /* Deeper dark purple for dark mode home */
-    --background-home-end-dark: #3a006c; /* Slightly lighter deep purple for dark mode home */
-    --background-sections-dark: #1A1A1A; /* Dark mode sections */
-    --background-sections-dark-alt: #222222; /* Slightly lighter dark gray for alternating sections */
-    --background-general-dark: #0A0A0A; /* Even darker for footer/general */
+    --background-home-start-dark: #1f005c; /* Dark theme gradient start for hero */
+    --background-home-end-dark: #3a006c;   /* Dark theme gradient end for hero */
+    --background-sections-dark: #1A1A1A; /* Dark theme section background */
+    --background-sections-dark-alt: #222222; /* Alternate dark section background */
+    --background-general-dark: #0A0A0A; /* General dark background */
 
-    /* Glassmorphism & Card Elements */
-    --glass-background-light: rgba(255, 255, 255, 0.4); /* Increased opacity for visible blur on light background */
-    --glass-border-light: rgba(255, 255, 255, 0.5);
-    --shadow-light: rgba(0, 0, 0, 0.08); /* Lighter, subtle shadow */
-    --input-background-light: #FFFFFF; /* Pure white for inputs */
+    --glass-background-light: rgba(255, 255, 255, 0.4); /* Glassmorphism background light */
+    --glass-border-light: rgba(255, 255, 255, 0.5);     /* Glassmorphism border light */
+    --shadow-light: rgba(0, 0, 0, 0.08); /* Shadow for light theme */
+    --input-background-light: #FFFFFF; /* Input background light */
 
-    --glass-background-dark: rgba(0, 0, 0, 0.3); /* Subtle opacity for glass in dark mode */
-    --glass-border-dark: rgba(255, 255, 255, 0.1);
-    --shadow-dark: rgba(0, 0, 0, 0.6); /* More pronounced shadow in dark mode */
-    --input-background-dark: #2C2C2E; /* Dark gray for inputs */
+    --glass-background-dark: rgba(0, 0, 0, 0.3); /* Glassmorphism background dark */
+    --glass-border-dark: rgba(255, 255, 255, 0.1);     /* Glassmorphism border dark */
+    --shadow-dark: rgba(0, 0, 0, 0.6); /* Shadow for dark theme */
+    --input-background-dark: #2C2C2E; /* Input background dark */
 }
 
 /* Universal box-sizing for consistent layout */
@@ -42,30 +38,32 @@
     box-sizing: border-box;
 }
 
+/* Smooth scrolling for anchor links */
 html {
     scroll-behavior: smooth;
 }
 
+/* Base body styles, sets font, removes default margins, and transitions for dark mode */
 body {
-    font-family: 'Poppins', sans-serif; /* Poppins for all text as per screenshot style */
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.7;
     color: var(--text-color-light);
-    background-color: var(--background-sections-light); /* Default to light gray for all non-hero sections */
+    background-color: var(--background-sections-light);
     transition: background-color 0.8s ease-in-out, color 0.8s ease-in-out;
-    overflow-x: hidden;
+    overflow-x: hidden; /* Prevents horizontal scroll */
 }
 
-/* Dark Mode Body Styles */
+/* Dark mode body styles, overrides light mode colors */
 body.dark-mode {
     color: var(--text-color-dark);
     background-color: var(--background-sections-dark);
 }
 
-/* Header and Navigation (with enhanced glassmorphism) */
+/* Header styles, sticky position, glassmorphism effect, and shadow */
 header {
-    background: rgba(255, 255, 255, 0.7); /* Direct rgba for clearer glass effect, no gradient */
+    background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     position: sticky;
@@ -76,12 +74,14 @@ header {
     transition: background 0.6s ease-in-out, box-shadow 0.6s ease-in-out, border-bottom 0.6s ease-in-out;
 }
 
+/* Dark mode header styles */
 body.dark-mode header {
-    background: rgba(0, 0, 0, 0.3); /* Dark mode header glass background */
+    background: rgba(0, 0, 0, 0.3);
     box-shadow: 0 2px 8px var(--shadow-dark);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Navigation bar layout */
 nav {
     display: flex;
     justify-content: space-between;
@@ -91,6 +91,7 @@ nav {
     padding: 0.8rem 2.5rem;
 }
 
+/* Logo styling */
 .logo {
     font-family: 'Poppins', sans-serif;
     font-size: 1.8rem;
@@ -103,6 +104,7 @@ nav {
     color: var(--secondary-color);
 }
 
+/* Navigation links list */
 .nav-links {
     list-style: none;
     margin: 0;
@@ -114,6 +116,7 @@ nav {
     margin-left: 2.5rem;
 }
 
+/* Navigation link styling with hover and active effects */
 .nav-links a {
     text-decoration: none;
     color: var(--text-color-light);
@@ -124,6 +127,7 @@ nav {
     transition: color 0.3s ease-in-out, transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
+/* Underline effect for nav links on hover/active */
 .nav-links a::after {
     content: '';
     position: absolute;
@@ -147,19 +151,19 @@ nav {
     transform: translateY(-2px);
 }
 
+/* Dark mode nav link styling */
 body.dark-mode .nav-links a {
     color: var(--text-color-dark);
 }
 
 body.dark-mode .nav-links a:hover {
-    color: var(--primary-color); /* Use primary for dark mode hover for consistency with vibrant theme */
+    color: var(--primary-color);
 }
 body.dark-mode .nav-links a.active::after {
-    background-color: var(--primary-color); /* Dark mode active link uses primary color */
+    background-color: var(--primary-color);
 }
 
-
-/* Dark Mode Toggle Button */
+/* Dark mode toggle button styling */
 .dark-mode-button {
     background: transparent;
     border: none;
@@ -178,20 +182,21 @@ body.dark-mode .nav-links a.active::after {
 
 .dark-mode-button:hover {
     color: var(--primary-color);
-    background-color: rgba(102, 126, 234, 0.1); /* Subtle background matching primary color */
+    background-color: rgba(102, 126, 234, 0.1);
     transform: scale(1.08);
 }
 
+/* Dark mode button colors in dark mode */
 body.dark-mode .dark-mode-button {
     color: var(--text-color-dark);
 }
 
 body.dark-mode .dark-mode-button:hover {
-    color: var(--primary-color); /* Dark mode hover matches primary color */
+    color: var(--primary-color);
     background-color: rgba(102, 126, 234, 0.1);
 }
 
-/* Hero Section (Home) - Exact User Specified Gradient */
+/* Hero section styling, full height and gradient background */
 .hero-section {
     min-height: 100vh;
     display: flex;
@@ -200,32 +205,35 @@ body.dark-mode .dark-mode-button:hover {
     padding: 4rem 2.5rem;
     position: relative;
     overflow: hidden;
-    background: linear-gradient(135deg, var(--background-home-start) 0%, var(--background-home-end) 100%); /* EXACT user-specified gradient */
-    color: white; /* Light text for readability on dark gradient */
+    background: linear-gradient(135deg, var(--background-home-start) 0%, var(--background-home-end) 100%);
+    color: white;
     transition: background 0.8s ease-in-out, color 0.8s ease-in-out;
 }
 
+/* Dark mode hero section background */
 body.dark-mode .hero-section {
     background: linear-gradient(135deg, var(--background-home-start-dark) 0%, var(--background-home-end-dark) 100%);
-    color: var(--text-color-dark); /* Light text on dark background */
+    color: var(--text-color-dark);
 }
 
+/* Hero content layout (text and image) */
 .hero-content {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center; /* Keep content group centered, adjust internal elements */
-    gap: 4rem; /* Maintain gap, but flex properties will control distribution */
-    max-width: 1200px; /* Increased max-width for more spread */
+    justify-content: center;
+    gap: 4rem;
+    max-width: 1200px;
     margin: 0 auto;
     width: 100%;
-    padding: 0 2rem; /* Add horizontal padding to prevent content touching edges */
+    padding: 0 2rem;
 }
 
+/* Hero text styling */
 .hero-text {
-    flex: 1.2; /* Give more flexibility to text to take space */
-    text-align: left; /* Shift text to the left */
-    max-width: 650px; /* Allow text block to be wider */
+    flex: 1.2;
+    text-align: left;
+    max-width: 650px;
 }
 
 .hero-text h1 {
@@ -234,116 +242,113 @@ body.dark-mode .hero-section {
     margin-bottom: 1rem;
     font-weight: 800;
     line-height: 1.1;
-    color: white; /* Always white text in hero */
+    color: white;
     letter-spacing: -0.03em;
 }
 
 .hero-text .highlight {
-    color: #F8F8F8; /* Use a very light color for highlight on this dark gradient */
+    color: #F8F8F8;
 }
 
 .hero-text p {
     font-size: 1.15rem;
     line-height: 1.8;
     margin-bottom: 2rem;
-    color: rgba(255, 255, 255, 0.9); /* Slightly transparent white for body text */
+    color: rgba(255, 255, 255, 0.9);
     font-weight: 400;
 }
 
+/* Hero image container and image styling */
 .hero-image {
-    flex: 0 0 380px; /* Fixed larger width for the image container */
+    flex: 0 0 380px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .hero-image img {
-    width: 350px; /* Increased image size */
-    height: 350px; /* Increased image size */
+    width: 350px;
+    height: 350px;
     border-radius: 50%;
     object-fit: cover;
-    border: 5px solid rgba(255, 255, 255, 0.8); /* White border for contrast on gradient */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Darker shadow for depth on light background */
+    border: 5px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 0.4s ease, border-color 0.4s ease;
 }
 
 .hero-image img:hover {
     transform: scale(1.03) rotate(1deg);
-    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4); /* Primary color shadow on hover */
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
 }
 body.dark-mode .hero-image img {
-    border: 5px solid var(--primary-color); /* Primary color for dark mode image border */
+    border: 5px solid var(--primary-color);
 }
 body.dark-mode .hero-image img:hover {
-    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4); /* Primary color shadow on hover */
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
 }
 
-/* Social Media Links - Home Section */
+/* Social links on hero section */
 .social-links-home {
     margin-top: 2.5rem;
     display: flex;
     gap: 1.8rem;
-    justify-content: flex-start; /* Align social links with left-aligned text */
+    justify-content: flex-start;
 }
 
 .social-links-home a {
-    color: white; /* Always white icons in hero */
+    color: white;
     font-size: 2.2rem;
     transition: color 0.3s ease-in-out, transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .social-links-home a:hover {
-    color: #F8F8F8; /* Subtle highlight on hover */
+    color: #F8F8F8;
     transform: translateY(-8px) scale(1.1);
 }
 
-
-/* General Section Styling (Ensuring full-width cream/light gray and centered content) */
+/* General section container styles */
 .section-container {
-    padding: 6rem 2.5rem; /* Generous padding */
-    text-align: center; /* Center align all text within sections (unless overridden) */
-    background-color: var(--background-sections-light); /* Default to light gray background */
-    box-sizing: border-box;
-    transition: background-color 0.8s ease-in-out, color 0.8s ease-in-out;
-
-    /* These properties make the section full width and content centered */
+    padding: 6rem 2.5rem;
+    text-align: center;
+    background-color: var(--background-sections-light);
     width: 100vw;
     position: relative;
     left: 50%;
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
+    transition: background-color 0.8s ease-in-out, color 0.8s ease-in-out;
 }
 
+/* Dark mode section container background */
 body.dark-mode .section-container {
     background-color: var(--background-sections-dark);
 }
 
-/* --- NEW: Alternating Section Backgrounds --- */
-/* Target Skills and Contact sections for alternate backgrounds */
+/* Specific background for Skills and Contact sections */
 #skills, #contact {
     background-color: var(--background-sections-light-alt);
 }
 
+/* Dark mode specific background for Skills and Contact sections */
 body.dark-mode #skills, body.dark-mode #contact {
     background-color: var(--background-sections-dark-alt);
 }
-/* --- END NEW --- */
 
-/* Ensure content inside full-width sections is still max-width and centered */
-.section-container > *:not(h2) { /* Target direct children that are not H2 for alignment */
+/* Max width for content within sections */
+.section-container > *:not(h2) {
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
 }
-/* Re-center specific elements that are not direct children of section-container */
-.skills-grid, .projects-grid, .contact-content { /* Added contact-content here */
+
+.skills-grid, .projects-grid, .contact-content {
     margin-left: auto;
     margin-right: auto;
-    max-width: 1100px; /* Adjust as needed for specific grids */
+    max-width: 1100px;
 }
 
-
+/* Section heading styles with underline effect */
 .section-container h2 {
     font-family: 'Poppins', sans-serif;
     font-size: 3rem;
@@ -371,9 +376,10 @@ body.dark-mode .section-container h2 {
     border-radius: 2px;
 }
 body.dark-mode .section-container h2::after {
-    background-color: var(--primary-color); /* Use primary for dark mode underline */
+    background-color: var(--primary-color);
 }
 
+/* General paragraph styling within sections */
 .section-container p {
     font-size: 1.05rem;
     line-height: 1.8;
@@ -387,105 +393,90 @@ body.dark-mode .section-container p {
     color: var(--text-color-dark);
 }
 
-/* About Section Specifics - REVERTED TO PREVIOUS STATE */
+/* About section specific paragraph alignment */
 #about p {
-    text-align: left; /* Keep about text left aligned for readability */
-    font-family: 'Poppins', sans-serif; /* Reverted to Poppins */
-    font-size: 1.1rem; /* Reverted to 1.1rem */
+    text-align: left;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
     line-height: 1.8;
     max-width: 800px;
     margin: 0 auto 2rem auto;
-    color: var(--text-color-light); /* Ensure consistent text color */
-    font-weight: 400; /* Ensure consistent font weight */
+    color: var(--text-color-light);
+    font-weight: 400;
 }
 
 body.dark-mode #about p {
-    color: var(--text-color-dark); /* Use the dark mode text color variable */
+    color: var(--text-color-dark);
 }
 
-/* NEW: Styling for the About Quote Box */
+/* Quote box in About section */
 .about-quote-box {
-    background: var(--background-sections-light-alt); /* Use the alternate background color for distinction */
-    border-left: 6px solid var(--primary-color); /* A strong left border with primary color */
+    background: var(--background-sections-light-alt);
+    border-left: 6px solid var(--primary-color);
     padding: 1.5rem 2rem;
-    margin: 3rem auto; /* Add margin top/bottom for clear separation */
-    max-width: 750px; /* Slightly narrower than main paragraph for emphasis */
+    margin: 3rem auto;
+    max-width: 750px;
     border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Subtle shadow */
-    display: flex; /* Use flexbox for icon and text alignment */
-    align-items: flex-start; /* Align items to the top */
-    gap: 1.5rem; /* Space between icon and text */
-    text-align: left; /* Ensure text inside is left-aligned */
-    transition: background-color 0.8s ease-in-out, border-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    text-align: left;
+    transition: background-color 0.8s ease-in-out, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-/* Ensure the quote box paragraph also adapts properly */
 .about-quote-box p {
     margin: 0;
     font-size: 1.25rem;
     font-style: italic;
     line-height: 1.6;
-    color: var(--text-color-light); /* This is for light mode */
+    color: var(--text-color-light);
     font-weight: 500;
-}
-
-/* NEW: Add this for the quote box paragraph in dark mode */
-body.dark-mode .about-quote-box p {
-    color: var(--text-color-dark); /* Use the dark mode text color variable */
-}
-
-body.dark-mode .about-quote-box {
-    background: var(--background-sections-dark-alt); /* Dark mode alternate background */
-    border-left: 6px solid var(--accent-color); /* Use accent color for dark mode border */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Stronger shadow in dark mode */
-}
-
-.about-quote-box p {
-    margin: 0; /* Remove default paragraph margin within the box */
-    font-size: 1.25rem; /* Larger font size for the quote */
-    font-style: italic; /* Italicize the quote for distinction */
-    line-height: 1.6;
-    color: var(--text-color-light); /* Ensure text color is appropriate */
-    font-weight: 500; /* Slightly bolder for emphasis */
 }
 
 body.dark-mode .about-quote-box p {
     color: var(--text-color-dark);
 }
 
+/* Dark mode quote box styling */
+body.dark-mode .about-quote-box {
+    background: var(--background-sections-dark-alt);
+    border-left: 6px solid var(--accent-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Quote icon styling */
 .about-quote-icon {
-    font-size: 2.2rem; /* Size of the icon */
-    color: var(--primary-color); /* Color of the icon */
-    min-width: 30px; /* Ensure icon doesn't shrink too much */
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    min-width: 30px;
     transition: color 0.3s ease;
 }
 
 body.dark-mode .about-quote-icon {
-    color: var(--accent-color); /* Accent color for dark mode icon */
+    color: var(--accent-color);
 }
 
-/* Optional: Add a subtle hover effect to the quote box */
+/* Quote box hover effect */
 .about-quote-box:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.1); /* Subtle lift effect */
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.1);
 }
 body.dark-mode .about-quote-box:hover {
     box-shadow: 0 8px 20px rgba(102, 126, 234, 0.2);
 }
-/* Removed explicit styling for strong tags within #about p */
-/* They will now inherit default bold and color */
 
-
-/* Skills Section - Glassmorphism Cards */
+/* Skills section grid layout */
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     margin-top: 4rem;
-    text-align: left; /* Keep text left aligned within skill cards */
-    max-width: 900px; /* Added max-width for centering the grid */
+    text-align: left;
+    max-width: 900px;
 }
 
+/* Skill category card styling with glassmorphism */
 .skill-category {
     background: var(--glass-background-light);
     backdrop-filter: blur(15px) saturate(180%);
@@ -499,21 +490,23 @@ body.dark-mode .about-quote-box:hover {
     flex-direction: column;
 }
 
+/* Dark mode skill category card styling */
 body.dark-mode .skill-category {
     background: var(--glass-background-dark);
     box-shadow: 0 5px 15px var(--shadow-dark);
     border: 1px solid var(--glass-border-dark);
 }
 
+/* Skill category hover effect */
 .skill-category:hover {
     transform: translateY(-8px);
-    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2); /* Primary color shadow on hover */
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
 }
 body.dark-mode .skill-category:hover {
     box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
 }
 
-
+/* Skill category heading */
 .skill-category h3 {
     font-family: 'Poppins', sans-serif;
     font-size: 1.5rem;
@@ -524,14 +517,15 @@ body.dark-mode .skill-category:hover {
     text-align: center;
 }
 body.dark-mode .skill-category h3 {
-    color: var(--primary-color); /* Primary color for dark mode skills heading */
+    color: var(--primary-color);
 }
 
+/* Skill list styling */
 .skill-list {
     list-style: none;
     padding: 0;
     margin: 0;
-    columns: 1;
+    columns: 1; /* For single column layout by default */
 }
 
 .skill-list li {
@@ -557,6 +551,7 @@ body.dark-mode .skill-list li i {
     color: var(--primary-color);
 }
 
+/* Skill list item hover effect */
 .skill-list li:hover i {
     transform: scale(1.1);
 }
@@ -567,15 +562,16 @@ body.dark-mode .skill-list li:hover {
     color: var(--secondary-color);
 }
 
-/* Projects Section - Glassmorphism Cards */
+/* Projects section grid layout */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2.5rem;
     margin-top: 4rem;
-    max-width: 1100px; /* Added max-width for centering the grid */
+    max-width: 1100px;
 }
 
+/* Project card styling with glassmorphism */
 .project-card {
     background: var(--glass-background-light);
     backdrop-filter: blur(18px) saturate(180%);
@@ -592,20 +588,23 @@ body.dark-mode .skill-list li:hover {
     min-height: 300px;
 }
 
+/* Dark mode project card styling */
 body.dark-mode .project-card {
     background: var(--glass-background-dark);
     box-shadow: 0 8px 20px var(--shadow-dark);
     border: 1px solid var(--glass-border-dark);
 }
 
+/* Project card hover effect */
 .project-card:hover {
     transform: translateY(-10px) scale(1.01);
-    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.25); /* Primary color shadow on hover */
+    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.25);
 }
 body.dark-mode .project-card:hover {
     box-shadow: 0 15px 35px rgba(102, 126, 234, 0.25);
 }
 
+/* Project card heading */
 .project-card h3 {
     font-family: 'Poppins', sans-serif;
     font-size: 1.6rem;
@@ -618,24 +617,26 @@ body.dark-mode .project-card h3 {
     color: var(--primary-color);
 }
 
+/* Project card paragraph */
 .project-card p {
     font-size: 1rem;
     color: var(--text-color-light);
     margin-bottom: 1.5rem;
     line-height: 1.7;
     text-align: left;
-    flex-grow: 1;
+    flex-grow: 1; /* Allows paragraph to take available space */
 }
 body.dark-mode .project-card p {
     color: var(--text-color-dark);
 }
 
+/* Project links styling */
 .project-links {
     display: flex;
     gap: 1rem;
     margin-top: 1.2rem;
     flex-wrap: wrap;
-    justify-content: flex-start; /* Keep project links left-aligned within card */
+    justify-content: flex-start;
 }
 
 .project-links a {
@@ -658,6 +659,7 @@ body.dark-mode .project-links a {
     border: 1px solid var(--primary-color);
 }
 
+/* Project links hover effect */
 .project-links a:hover {
     background-color: var(--primary-color);
     color: white;
@@ -675,24 +677,25 @@ body.dark-mode .project-links a:hover {
     font-size: 1rem;
 }
 
-/* Contact Section */
+/* Contact section content layout (info and form) */
 .contact-content {
     display: flex;
-    flex-direction: row; /* Default to row layout */
-    justify-content: space-between; /* Space out content and form */
-    align-items: flex-start; /* Align items to the top */
-    gap: 3rem; /* Space between the two columns */
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 3rem;
     margin-top: 3.5rem;
-    max-width: 1000px; /* Control max width of the contact content */
+    max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
-    text-align: left; /* Reset text-align for internal elements */
+    text-align: left;
 }
 
+/* Contact information column */
 .contact-info {
-    flex: 1; /* Allow info to take up available space */
-    padding-right: 2rem; /* Add some padding on the right */
-    max-width: 45%; /* Control width */
+    flex: 1;
+    padding-right: 2rem;
+    max-width: 45%;
 }
 
 .contact-info h3 {
@@ -705,15 +708,14 @@ body.dark-mode .contact-info h3 {
     color: var(--primary-color);
 }
 
-
 .contact-info p {
     font-size: 1.05rem;
     margin-bottom: 0.8rem;
     display: flex;
     align-items: center;
-    gap: 10px; /* Space between icon and text */
+    gap: 10px;
     color: var(--text-color-light);
-    line-height: 1.5; /* Adjusted line height for clarity */
+    line-height: 1.5;
 }
 body.dark-mode .contact-info p {
     color: var(--text-color-dark);
@@ -736,18 +738,18 @@ body.dark-mode .contact-info p i {
     opacity: 0.8;
 }
 
-
+/* Contact form styling with glassmorphism */
 .contact-form {
-    flex: 1; /* Allow form to take up available space */
-    max-width: 50%; /* Control width to be slightly larger than info */
+    flex: 1;
+    max-width: 50%;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    background: var(--glass-background-light); /* Apply glassmorphism to the form itself */
+    background: var(--glass-background-light);
     backdrop-filter: blur(15px) saturate(180%);
     -webkit-backdrop-filter: blur(15px) saturate(180%);
     border-radius: 14px;
-    padding: 2rem; /* Padding for the form card */
+    padding: 2rem;
     box-shadow: 0 5px 15px var(--shadow-light);
     border: 1px solid var(--glass-border-light);
 }
@@ -762,13 +764,13 @@ body.dark-mode .contact-form {
     color: var(--primary-color);
     margin-bottom: 1rem;
     font-weight: 600;
-    text-align: center; /* Center form heading */
+    text-align: center;
 }
 body.dark-mode .contact-form h3 {
     color: var(--primary-color);
 }
 
-
+/* Contact form input and textarea styling */
 .contact-form input,
 .contact-form textarea {
     padding: 1.1rem 1.4rem;
@@ -781,6 +783,7 @@ body.dark-mode .contact-form h3 {
     transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.4s ease-in-out, color 0.4s ease-in-out;
 }
 
+/* Dark mode input/textarea styling */
 body.dark-mode .contact-form input,
 body.dark-mode .contact-form textarea {
     border-color: rgba(255, 255, 255, 0.1);
@@ -788,28 +791,32 @@ body.dark-mode .contact-form textarea {
     color: var(--text-color-dark);
 }
 
+/* Placeholder text color for inputs */
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
-    color: rgba(var(--text-color-light), 0.5);
+    color: rgba(var(--text-color-light-rgb), 0.5);
 }
 
 body.dark-mode .contact-form input::placeholder,
 body.dark-mode .contact-form textarea::placeholder {
-    color: rgba(var(--text-color-dark), 0.5);
+    color: rgba(var(--text-color-dark-rgb), 0.5);
 }
 
+/* Focus styles for inputs */
 .contact-form input:focus,
 .contact-form textarea:focus {
     outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15); /* Primary color focus ring */
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
 }
 
+/* Textarea specific styling */
 .contact-form textarea {
     resize: vertical;
     min-height: 140px;
 }
 
+/* Submit button styling */
 .contact-form button {
     background-color: var(--primary-color);
     color: white;
@@ -820,12 +827,13 @@ body.dark-mode .contact-form textarea::placeholder {
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s ease-in-out, transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), box-shadow 0.3s ease-in-out;
-    align-self: center; /* Keep button centered within form */
+    align-self: center;
     letter-spacing: 0.02em;
 }
 
+/* Submit button hover effect */
 .contact-form button:hover {
-    background-color: #5567D0; /* Slightly darker primary */
+    background-color: #5567D0;
     transform: translateY(-4px);
     box-shadow: 0 6px 15px rgba(102, 126, 234, 0.25);
 }
@@ -838,12 +846,27 @@ body.dark-mode .contact-form button:hover {
     box-shadow: 0 6px 15px rgba(102, 126, 234, 0.25);
 }
 
+/* Form message display */
+#form-message {
+    font-weight: 600;
+    margin-top: 10px;
+    transition: opacity 0.3s ease, color 0.3s ease;
+    opacity: 0;
+    pointer-events: none;
+    text-align: center;
+}
 
+#form-message.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Social links in contact section */
 .social-links-contact {
     margin-top: 3.5rem;
     display: flex;
     gap: 2rem;
-    justify-content: center; /* Keep social links centered below contact section */
+    justify-content: center;
 }
 
 .social-links-contact a {
@@ -864,7 +887,7 @@ body.dark-mode .social-links-contact a:hover {
     color: var(--primary-color);
 }
 
-/* Footer */
+/* Footer styling */
 footer {
     background-color: var(--background-sections-light);
     color: var(--text-color-light);
@@ -873,8 +896,6 @@ footer {
     font-size: 0.95rem;
     border-top: 1px solid rgba(0, 0, 0, 0.03);
     transition: background-color 0.8s ease-in-out, color 0.8s ease-in-out, border-top 0.8s ease-in-out;
-
-    /* Ensure footer takes full width */
     width: 100vw;
     position: relative;
     left: 50%;
@@ -883,13 +904,16 @@ footer {
     margin-right: -50vw;
 }
 
+/* Dark mode footer styling */
 body.dark-mode footer {
     background-color: var(--background-sections-dark);
     color: var(--text-color-dark);
     border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Responsive Design */
+/* Media queries for responsiveness */
+
+/* Large devices (laptops) */
 @media (max-width: 1200px) {
     .hero-content {
         gap: 3rem;
@@ -899,7 +923,7 @@ body.dark-mode footer {
         font-size: 3.2rem;
     }
     .hero-image img {
-        width: 300px; /* Adjust for smaller screens */
+        width: 300px;
         height: 300px;
     }
     .section-container h2 {
@@ -909,30 +933,30 @@ body.dark-mode footer {
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
     .contact-content {
-        flex-direction: column; /* Stack contact info and form on smaller screens */
-        align-items: center; /* Center items when stacked */
+        flex-direction: column; /* Stack contact info and form vertically */
+        align-items: center;
         gap: 2.5rem;
     }
     .contact-info, .contact-form {
-        max-width: 100%; /* Allow them to take full width */
-        padding-right: 0; /* Remove right padding */
-        text-align: center; /* Center text when stacked */
+        max-width: 100%;
+        padding-right: 0;
+        text-align: center;
     }
     .contact-info p {
-        justify-content: center; /* Center icons and text */
+        justify-content: center;
     }
     .contact-form h3 {
         text-align: center;
     }
-    /* About section media query adjustments */
     #about p {
-        font-size: 1.1rem; /* Revert font size to match previous state in media query */
+        font-size: 1.1rem;
     }
 }
 
+/* Medium devices (tablets) */
 @media (max-width: 992px) {
     .nav-links {
-        display: none;
+        display: none; /* Hide nav links on smaller screens */
     }
     nav {
         padding: 0.7rem 1.5rem;
@@ -946,13 +970,13 @@ body.dark-mode footer {
         height: 40px;
     }
     .hero-content {
-        flex-direction: column;
+        flex-direction: column; /* Stack hero content vertically */
         gap: 3rem;
         text-align: center;
         padding: 0 1.5rem;
     }
     .hero-text {
-        text-align: center; /* Re-center text for single column layout */
+        text-align: center;
     }
     .hero-text h1 {
         font-size: 2.8rem;
@@ -961,10 +985,10 @@ body.dark-mode footer {
         font-size: 1rem;
     }
     .social-links-home {
-        justify-content: center; /* Re-center social links */
+        justify-content: center;
     }
     .hero-image img {
-        width: 250px; /* Smaller image on mobile */
+        width: 250px;
         height: 250px;
         border-width: 4px;
     }
@@ -980,7 +1004,7 @@ body.dark-mode footer {
     }
     .skills-grid,
     .projects-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Single column layout for grids */
         gap: 2rem;
     }
     .skill-category, .project-card {
@@ -1002,7 +1026,7 @@ body.dark-mode footer {
         font-size: 0.9rem;
     }
     .project-links {
-        justify-content: center; /* Center project links on smaller screens */
+        justify-content: center;
     }
     .contact-form button {
         align-self: center;
@@ -1010,12 +1034,12 @@ body.dark-mode footer {
     .social-links-contact a {
         font-size: 2rem;
     }
-    /* About section media query adjustments */
-    #about p { /* Revert font size to match previous state in media query */
+    #about p {
         font-size: 1rem;
     }
 }
 
+/* Small devices (large phones) */
 @media (max-width: 768px) {
     .hero-text h1 {
         font-size: 2.4rem;
@@ -1024,7 +1048,7 @@ body.dark-mode footer {
         font-size: 0.95rem;
     }
     .hero-image img {
-        width: 200px; /* Even smaller image */
+        width: 200px;
         height: 200px;
     }
     .section-container {
@@ -1069,6 +1093,7 @@ body.dark-mode footer {
     }
 }
 
+/* Extra small devices (phones) */
 @media (max-width: 576px) {
     .logo {
         font-size: 1.4rem;
@@ -1083,7 +1108,7 @@ body.dark-mode footer {
         font-size: 0.85rem;
     }
     .hero-image img {
-        width: 160px; /* Smallest image size */
+        width: 160px;
         height: 160px;
         border-width: 2px;
     }
@@ -1114,7 +1139,7 @@ body.dark-mode footer {
         font-size: 0.75rem;
     }
     .project-links {
-        flex-direction: column;
+        flex-direction: column; /* Stack project links vertically */
         gap: 0.6rem;
     }
     .project-links a {
@@ -1122,33 +1147,13 @@ body.dark-mode footer {
         justify-content: center;
     }
     .contact-info p {
-        flex-direction: column; /* Stack icon and text for very small screens */
+        flex-direction: column; /* Stack contact info text vertically */
         align-items: center;
         text-align: center;
         gap: 5px;
     }
     .contact-form button {
         width: 100%;
-        align-self: stretch;
+        align-self: stretch; /* Make button full width */
     }
-}
-#form-message {
-  font-weight: 600;
-  margin-top: 10px;
-  transition: opacity 0.3s ease;
-  opacity: 0;
-  pointer-events: none;
-}
-
-#form-message.show {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-#form-message.error {
-  color: #d9534f; /* red */
-}
-
-#form-message.success {
-  color: #28a745; /* green */
 }
